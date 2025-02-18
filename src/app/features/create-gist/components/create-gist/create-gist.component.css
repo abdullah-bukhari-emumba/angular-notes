@@ -1,0 +1,94 @@
+.create-gist-container {
+  max-width: 1012px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.create-gist-header {
+  margin-bottom: 1rem;
+}
+
+.gist-form {
+  background-color: #ffffff;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 1rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.gist-description {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.file-section {
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  margin-bottom: 1rem;
+}
+
+.file-header {
+  padding: 0.5rem;
+  background-color: #f6f8fa;
+  border-bottom: 1px solid #d0d7de;
+}
+
+.file-name-input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  font-size: 0.9rem;
+}
+
+.code-editor {
+  width: 100%;
+  min-height: 200px;
+  padding: 1rem;
+  border: none;
+  font-family: monospace;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.create-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #0d3b49;
+  color: white;
+  border: none;
+}
+
+.btn-secondary {
+  background-color: #f6f8fa;
+  border: 1px solid #d0d7de;
+  color: #24292f;
+}
+
+.btn-outline {
+  background-color: white;
+  border: 1px solid #d0d7de;
+  color: #24292f;
+}

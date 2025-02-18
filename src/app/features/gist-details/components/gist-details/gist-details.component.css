@@ -1,0 +1,70 @@
+.gist-details-container {
+  max-width: 1012px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.gist-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.author-info {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.author-pic {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+}
+
+.author-name {
+  font-weight: 600;
+  color: #24292f;
+}
+
+.separator {
+  color: #656d76;
+}
+
+.gist-name {
+  color: #0d3b49;
+}
+
+.gist-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-outline {
+  background-color: white;
+  border: 1px solid #d0d7de;
+  color: #24292f;
+}
+
+.gist-meta {
+  color: #656d76;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+.gist-content {
+  background-color: white;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+}

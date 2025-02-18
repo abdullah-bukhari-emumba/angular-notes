@@ -1,0 +1,53 @@
+.code-container {
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.code-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #f6f8fa;
+  border-bottom: 1px solid #d0d7de;
+}
+
+.file-name {
+  font-family: monospace;
+  color: #24292f;
+}
+
+.code-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.action-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.25rem;
+  color: #656d76;
+}
+
+.action-btn:hover {
+  color: #0d3b49;
+}
+
+.code-preview {
+  padding: 1rem;
+  background-color: #ffffff;
+  overflow-x: auto;
+}
+
+pre {
+  margin: 0;
+  font-family: monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+code {
+  color: #24292f;
+}

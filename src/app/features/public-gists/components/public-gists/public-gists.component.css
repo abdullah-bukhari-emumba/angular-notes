@@ -1,0 +1,54 @@
+.main-content {
+  display: flex;
+  gap: 2rem;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.sidebar {
+  width: 296px;
+  flex-shrink: 0;
+}
+
+.user-info {
+  text-align: center;
+}
+
+.profile-pic-large {
+  width: 230px;
+  height: 230px;
+  border-radius: 50%;
+  margin-bottom: 1rem;
+}
+
+.user-name {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #24292f;
+}
+
+.view-profile-btn {
+  padding: 0.5rem 1rem;
+  background-color: #0d3b49;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.gists-container {
+  flex: 1;
+}
+
+.gists-header {
+  margin-bottom: 2rem;
+}
+
+.gist-count {
+  background-color: #0d3b49;
+  color: white;
+  padding: 0.2rem 0.6rem;
+  border-radius: 1rem;
+  font-size: 0.9rem;
+}

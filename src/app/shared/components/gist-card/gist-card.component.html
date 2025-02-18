@@ -1,0 +1,16 @@
+<div class="gist-card">
+  <div class="gist-header">
+    <div class="gist-author">
+      <img [src]="authorImage" alt="Author" class="author-pic">
+      <span class="author-name">{{authorName}}</span>
+      <span class="gist-separator">/</span>
+      <span class="gist-name">{{gistName}}</span>
+    </div>
+    <div class="gist-meta">
+      Created {{createdAt}}
+    </div>
+  </div>
+  <div class="gist-content">
+    <app-gist-code [code]="code"></app-gist-code>
+  </div>
+</div>

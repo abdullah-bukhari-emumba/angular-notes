@@ -1,0 +1,43 @@
+
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1%;
+    background-color: #003b44;
+    position: sticky;
+}
+
+.header-right {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+}
+
+.logo {
+    color: aliceblue;
+}
+
+input {
+    padding: 0.5rem;
+    border-radius: 3px;
+    border: none;
+    /* padding-inline: 3rem; */
+    /* padding-left: 0; */
+    text-align: start;
+    width: 20rem;
+}
+
+button {
+    border-radius: 0.4rem;
+    padding-inline: 1.5rem;
+    padding-block: 0.75rem;
+    color: #003b44;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
+svg {
+    align-self: center;
+}

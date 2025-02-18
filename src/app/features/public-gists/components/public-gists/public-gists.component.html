@@ -1,0 +1,25 @@
+<main class="main-content">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="user-info">
+      <img src="assets/profile-pic.jpg" alt="Profile" class="profile-pic-large">
+      <h2 class="user-name">John Doe</h2>
+      <button class="view-profile-btn">View GitHub Profile</button>
+    </div>
+  </aside>
+
+  <!-- Gists Content -->
+  <section class="gists-container">
+    <div class="gists-header">
+      <h1>All Gists <span class="gist-count">5</span></h1>
+    </div>
+    
+    <app-gist-card *ngFor="let gist of gists" 
+      [authorImage]="gist.authorImage"
+      [authorName]="gist.authorName"
+      [gistName]="gist.name"
+      [createdAt]="gist.createdAt"
+      [code]="gist.code">
+    </app-gist-card>
+  </section>
+</main>
