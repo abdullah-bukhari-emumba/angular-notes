@@ -6,6 +6,6 @@ const routes: Routes = [{ path: '', component: PublicGistsComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class PublicGistsRoutingModule { }
+export class PublicGistsRoutingModule {}

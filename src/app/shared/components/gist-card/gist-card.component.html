@@ -6,8 +6,16 @@
       <span class="gist-separator">/</span>
       <span class="gist-name">{{gistName}}</span>
     </div>
+    <div class="gist-actions">
+      <button class="action-btn" (click)="onFork.emit()">
+        <i class="pi pi-code"></i>
+      </button>
+      <button class="action-btn" (click)="onStar.emit()">
+        <i class="pi pi-star"></i>
+      </button>
+    </div>
     <div class="gist-meta">
-      Created {{createdAt}}
+      Updated {{createdAt}}
     </div>
   </div>
   <div class="gist-content">

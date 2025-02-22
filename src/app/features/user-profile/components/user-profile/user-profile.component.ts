@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './user-profile.component.css'
 })
 export class UserProfileComponent {
-  userGists = [
+  userGists: any[] = [
     {
       authorImage: 'assets/profile-pic.jpg',
       authorName: 'John Doe',

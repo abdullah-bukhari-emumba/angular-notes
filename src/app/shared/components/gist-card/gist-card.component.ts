@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-gist-card',
@@ -7,9 +7,12 @@ import { Component, Input } from '@angular/core';
   styleUrl: './gist-card.component.css'
 })
 export class GistCardComponent {
-  @Input() authorImage: string = '';
-  @Input() authorName: string = '';
-  @Input() gistName: string = '';
-  @Input() createdAt: string = '';
-  @Input() code: string = '';
+  @Input() authorImage: any = '';
+  @Input() authorName: any = '';
+  @Input() gistName: any = '';
+  @Input() createdAt: any = '';
+  @Input() code: any = '';
+  
+  @Output() onFork = new EventEmitter<void>();
+  @Output() onStar = new EventEmitter<void>();
 }

@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
+import { TableModule } from 'primeng/table';
+import { PaginatorModule } from 'primeng/paginator';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,6 +20,9 @@ import { UserProfileModule } from './features/user-profile/user-profile.module';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    TableModule,
+    PaginatorModule,
     CoreModule,
     SharedModule,
     PublicGistsModule,

@@ -1,25 +1,175 @@
 <main class="main-content">
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="user-info">
-      <img src="assets/profile-pic.jpg" alt="Profile" class="profile-pic-large">
-      <h2 class="user-name">John Doe</h2>
-      <button class="view-profile-btn">View GitHub Profile</button>
-    </div>
-  </aside>
-
-  <!-- Gists Content -->
   <section class="gists-container">
     <div class="gists-header">
-      <h1>All Gists <span class="gist-count">5</span></h1>
+      <h1>
+        All Gists <span class="gist-count">{{ totalRecords }}</span>
+      </h1>
+      <div class="custom-tabs">
+        <div class="tabs-container">
+          <button 
+            class="tab-button" 
+            [class.active]="activeTabIndex === 0"
+            (click)="activeTabIndex = 0">
+            <i class="pi pi-list"></i>
+            <span>Table View</span>
+          </button>
+          <button 
+            class="tab-button" 
+            [class.active]="activeTabIndex === 1"
+            (click)="activeTabIndex = 1">
+            <i class="pi pi-th-large"></i>
+            <span>Card View</span>
+          </button>
+        </div>
+      </div>
     </div>
-    
-    <app-gist-card *ngFor="let gist of gists" 
-      [authorImage]="gist.authorImage"
-      [authorName]="gist.authorName"
-      [gistName]="gist.name"
-      [createdAt]="gist.createdAt"
-      [code]="gist.code">
-    </app-gist-card>
+
+    <!-- Table View with Skeleton -->
+    <div class="gists-table-container" *ngIf="activeTabIndex === 0">
+      <ng-container *ngIf="!isLoading; else tableSkeletonTpl">
+        <table id="gists-table">
+          <tr class="table-header">
+            <th>Owner</th>
+            <th>Notebook Name</th>
+            <th>Updated At</th>
+            <th>Actions</th>
+          </tr>
+          <ng-container *ngFor="let gist of gistsList; trackBy: gistIdentifier">
+            <tr>
+              <td class="gist-owner-cell">
+                <img
+                  class="gist-owner-avatar"
+                  [src]="gist.owner.avatar_url"
+                  [alt]="gist.owner.login"
+                />
+                <a [routerLink]="['/gist', gist.id]" class="gist-owner-name">
+                  <h4>{{ gist.owner.login }}</h4>
+                </a>
+              </td>
+              <td>
+                {{ gist.description ? (gist.description | slice:0:30) + "..." : "N/A" }}
+              </td>
+              <td>{{ gist.updated_at | date:'medium' }}</td>
+              <td class="gist-actions-cell">
+                <div class="actions-icons">
+                  <button (click)="forkGist.emit(gist.id)">
+                    <i class="pi pi-code" style="color: #003b44"></i>
+                    Fork
+                  </button>
+                  <button (click)="starGist.emit(gist.id)">
+                    <i class="pi pi-star" style="color: #003b44"></i>
+                    Star
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </ng-container>
+        </table>
+      </ng-container>
+    </div>
+
+    <!-- Cards View with Skeleton -->
+    <div class="gists-cards-container" *ngIf="activeTabIndex === 1">
+      <ng-container *ngIf="!isLoading; else cardSkeletonTpl">
+        <div class="gists-grid">
+          <app-gist-card
+            *ngFor="let gist of gistsList; trackBy: gistIdentifier"
+            [authorImage]="gist.owner.avatar_url"
+            [authorName]="gist.owner.login"
+            [gistName]="gist.description || 'Untitled'"
+            [createdAt]="gist.updated_at | date:'medium'"
+            [code]="''"
+            (onFork)="forkGist.emit(gist.id)"
+            (onStar)="starGist.emit(gist.id)"
+          >
+          </app-gist-card>
+        </div>
+      </ng-container>
+    </div>
+
+    <!-- Table Skeleton Template -->
+    <ng-template #tableSkeletonTpl>
+      <table class="skeleton-table">
+        <tr class="table-header">
+          <th>Owner</th>
+          <th>Notebook Name</th>
+          <th>Updated At</th>
+          <th>Actions</th>
+        </tr>
+        <tr class="skeleton-row" *ngFor="let i of [1,2,3,4,5,6]">
+          <td>
+            <div class="skeleton-owner-cell">
+              <div class="skeleton-avatar"></div>
+              <div class="skeleton-text"></div>
+            </div>
+          </td>
+          <td><div class="skeleton-text"></div></td>
+          <td><div class="skeleton-text" style="width: 80px"></div></td>
+          <td>
+            <div class="skeleton-actions">
+              <div class="skeleton-button"></div>
+              <div class="skeleton-button"></div>
+            </div>
+          </td>
+        </tr>
+      </table>
+    </ng-template>
+
+    <!-- Card Skeleton Template -->
+    <ng-template #cardSkeletonTpl>
+      <div class="gists-grid">
+        <div class="skeleton-card" *ngFor="let i of [1,2,3,4,5,6]">
+          <div class="skeleton-card-header">
+            <div class="skeleton-card-author">
+              <div class="skeleton-avatar"></div>
+              <div class="skeleton-text"></div>
+            </div>
+            <div class="skeleton-card-actions">
+              <div class="skeleton-button"></div>
+              <div class="skeleton-button"></div>
+            </div>
+          </div>
+          <div class="skeleton-card-content">
+            <div class="skeleton-code-lines">
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
+
+    <!-- Add this after your table and cards containers -->
+    <div class="pagination-wrapper">
+      <div class="pagination">
+        <button 
+          class="pagination-button"
+          [class.disabled]="currentPage === 1"
+          (click)="loadGists(currentPage - 1)"
+          [disabled]="currentPage === 1">
+          <i class="pi pi-chevron-left"><</i>
+        </button>
+        
+        <div class="pagination-numbers">
+          <button 
+            *ngFor="let page of getPageNumbers()"
+            class="page-number"
+            [class.active]="page === currentPage"
+            (click)="loadGists(page)">
+            {{ page }}
+          </button>
+        </div>
+
+        <button 
+          class="pagination-button"
+          [class.disabled]="currentPage === totalPages"
+          (click)="loadGists(currentPage + 1)"
+          [disabled]="currentPage === totalPages">
+          <i class="pi pi-chevron-right">></i>
+        </button>
+      </div>
+    </div>
   </section>
 </main>

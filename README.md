@@ -1,60 +1,134 @@
-# v4
+# GitHub Gists Explorer
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.1.3.
+A modern Angular application that provides a beautiful interface for exploring and managing GitHub Gists.
 
-## Development server
+## 🎯 Project Overview
 
-To start a local development server, run:
+This application demonstrates modern Angular development practices and patterns while providing a user-friendly interface for GitHub Gists management.
 
-```bash
-ng serve
-```
+## ✨ Key Features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Implemented
+- Public Gists Explorer with dual view modes (Table/Card)
+- Custom pagination with server-side implementation
+- Modern loading skeletons
+- Responsive design across all devices
+- Gist actions (Fork/Star)
+- Dynamic view switching
+- Custom styled components
 
-## Code scaffolding
+### Coming Soon
+- User authentication
+- Personal gists management
+- Gist creation & editing
+- Real-time comments
+- Advanced search & filtering
+- Dark mode support
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## 🛠 Technical Stack
 
-```bash
-ng generate component component-name
-```
+### Core Technologies
+- Angular 16+
+- TypeScript
+- RxJS
+- GitHub API
+- PrimeNG Components (Selectively Used)
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+# Angular Concepts Demonstrated
+- Feature Modules & Lazy Loading
+- Component Communication
+- Services & Dependency Injection
+- Custom Loading States
+- Reactive Forms (Planned)
+- Route Guards (Planned)
+- HTTP Interceptors (Planned)
 
-```bash
-ng generate --help
-```
+### Architecture Highlights
+- Feature-based Module Organization
+- Service Layer Abstraction
+- Component Reusability
+- Responsive Design Patterns
+- Modern CSS Practices
 
-## Building
+## 🎨 UI/UX Features
 
-To build the project run:
+### Components
+- Custom Tab Navigation
+- Modern Card Layouts
+- Responsive Tables
+- Loading Skeletons
+- Custom Pagination
+- Action Buttons
 
-```bash
-ng build
-```
+### Design System
+- Consistent Color Palette
+- Modern Typography
+- Smooth Animations
+- Responsive Breakpoints
+- Accessibility Focused
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+## 📱 Responsive Design
 
-## Running unit tests
+### Breakpoints
+- Desktop (1200px+)
+- Tablet (768px - 1199px)
+- Mobile (< 768px)
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 🔄 Data Management
 
-```bash
-ng test
-```
+### Implemented
+- GitHub API Integration
+- Service Layer
+- Error Handling
+- Loading States
+- Data Transformation
 
-## Running end-to-end tests
+### Planned
+- Caching Strategy
+- Offline Support
+- Real-time Updates
+- State Management
 
-For end-to-end (e2e) testing, run:
+## 🧪 Testing Strategy
 
-```bash
-ng e2e
-```
+### Planned Implementation
+- Unit Tests
+- Integration Tests
+- E2E Tests
+- Performance Testing
+- Accessibility Testing
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+## 🔐 Security Features (Planned)
 
-## Additional Resources
+- OAuth Authentication
+- Route Protection
+- XSS Prevention
+- CSRF Protection
+- Secure HTTP Headers
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-# angular-notes
+## 🚀 Future Roadmap
+
+1. Advanced Search & Filtering
+2. Real-time Collaboration
+3. Offline Support
+4. Performance Optimizations
+5. Accessibility Improvements
+6. Dark Mode Implementation
+
+## 📚 Learning Resources
+
+This project serves as a comprehensive example of:
+- Modern Angular Development
+- Component Architecture
+- State Management
+- API Integration
+- Responsive Design
+- Performance Optimization
+
+## 🤝 Contributing
+
+Contributions are welcome! Please read our contributing guidelines and code of conduct before submitting pull requests.
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

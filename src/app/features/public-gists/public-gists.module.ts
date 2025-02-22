@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { PublicGistsComponent } from './components/public-gists/public-gists.component';
 import { SharedModule } from '../../shared/shared.module';
 import { PublicGistsRoutingModule } from './public-gists-routing.module';
+import { TableModule } from 'primeng/table';
+import { PaginatorModule } from 'primeng/paginator';
+import { TabViewModule } from 'primeng/tabview';
 
 @NgModule({
   declarations: [
@@ -11,7 +14,10 @@ import { PublicGistsRoutingModule } from './public-gists-routing.module';
   imports: [
     CommonModule,
     SharedModule,
-    PublicGistsRoutingModule
+    PublicGistsRoutingModule,
+    TableModule,
+    PaginatorModule,
+    TabViewModule
   ]
 })
 export class PublicGistsModule { }

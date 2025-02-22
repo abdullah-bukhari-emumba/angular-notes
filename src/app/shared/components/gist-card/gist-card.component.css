@@ -1,19 +1,30 @@
 .gist-card {
   background-color: white;
   border: 1px solid #d0d7de;
-  border-radius: 6px;
-  margin-bottom: 1rem;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.gist-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .gist-header {
   padding: 1rem;
   border-bottom: 1px solid #d0d7de;
+  background-color: #f8f9fa;
 }
 
 .gist-author {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .author-pic {
@@ -32,6 +43,30 @@
   margin-top: 0.5rem;
 }
 
+.gist-actions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.action-btn {
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  background: white;
+  color: #003b44;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  background: #f7fafc;
+  border-color: #cbd5e0;
+}
+
 .gist-content {
+  flex: 1;
   padding: 1rem;
+  max-height: 300px;
+  overflow: hidden;
 }
