@@ -35,7 +35,7 @@
             <th>Actions</th>
           </tr>
           <ng-container *ngFor="let gist of gistsList; trackBy: gistIdentifier">
-            <tr>
+            <tr (click)="navigateToGistDetails(gist.id)">
               <td class="gist-owner-cell">
                 <img
                   class="gist-owner-avatar"

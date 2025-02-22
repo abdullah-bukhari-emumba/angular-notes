@@ -1,24 +1,24 @@
 <div class="gist-details-container">
   <div class="gist-header">
     <div class="author-info">
-      <img src="assets/profile-pic.jpg" alt="Author" class="author-pic">
-      <span class="author-name">John Doe</span>
+      <img [src]="gist?.owner?.avatar_url" alt="Author" class="author-pic">
+      <span class="author-name">{{ gist?.owner?.login }}</span>
       <span class="separator">/</span>
-      <span class="gist-name">vercel-monorepo</span>
+      <span class="gist-name">{{ gist?.description || 'No description' }}</span>
     </div>
     
     <div class="gist-actions">
-      <button class="btn btn-outline">
+      <button class="btn btn-outline" (click)="forkGist.emit(gist?.id)">
         <i class="icon-fork"></i> Fork
       </button>
-      <button class="btn btn-outline">
+      <button class="btn btn-outline" (click)="starGist.emit(gist?.id)">
         <i class="icon-star"></i> Star
       </button>
     </div>
   </div>
 
   <div class="gist-meta">
-    Created 7 hours ago
+    Created {{ gist?.created_at | date:'short' }}
   </div>
 
   <div class="gist-content">

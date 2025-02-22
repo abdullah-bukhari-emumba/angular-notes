@@ -1,8 +1,9 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 // import "primeicons/primeicons.css";
 import { LazyLoadEvent } from 'primeng/api';
-import { GistsService } from '../../services/gists.service';
+import { GistsService } from '../../../../core/services/api/gist.service';
 
 @Component({
   selector: 'app-public-gists',
@@ -32,7 +33,7 @@ export class PublicGistsComponent implements OnInit {
     return gist.id;
   }
 
-  constructor(private http: HttpClient, private gistsService: GistsService) {}
+  constructor(private http: HttpClient, private gistsService: GistsService, private router: Router) {}
 
   ngOnInit() {
     this.loadGists(1);
@@ -81,5 +82,9 @@ export class PublicGistsComponent implements OnInit {
     }
     
     return pages;
+  }
+
+  navigateToGistDetails(gistId: string) {
+    this.router.navigate(['/gist', gistId]);
   }
 }
