@@ -51,3 +51,23 @@ pre {
 code {
   color: #24292f;
 }
+
+.key {
+  color: #059411;
+}
+
+.string {
+  color: #0072D1;
+}
+
+.number {
+  color: #d14;
+}
+
+.boolean {
+  color: #d14;
+}
+
+.null {
+  color: #d14;
+}

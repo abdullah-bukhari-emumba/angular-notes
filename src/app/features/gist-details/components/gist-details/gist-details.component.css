@@ -38,23 +38,42 @@
 
 .gist-actions {
   display: flex;
-  gap: 0.5rem;
+  gap: 10px;
 }
 
 .btn {
-  padding: 0.5rem 1rem;
+  padding: 5px 10px;
   border-radius: 6px;
   font-size: 0.9rem;
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  border: 1px solid #003b44;
+  color: #003b44;
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #003b44;
+  color: white;
 }
 
 .btn-outline {
   background-color: white;
   border: 1px solid #d0d7de;
   color: #24292f;
+}
+
+.icon-fork::before {
+  content: '\f126'; /* FontAwesome fork icon */
+  margin-right: 5px;
+}
+
+.icon-star::before {
+  content: '\f005'; /* FontAwesome star icon */
+  margin-right: 5px;
 }
 
 .gist-meta {

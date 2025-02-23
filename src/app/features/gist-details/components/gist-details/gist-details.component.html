@@ -9,10 +9,10 @@
     
     <div class="gist-actions">
       <button class="btn btn-outline" (click)="forkGist.emit(gist?.id)">
-        <i class="icon-fork"></i> Fork
+        <fa-icon [icon]="forkIcon" ></fa-icon> Fork ({{ gist?.forks_count || 0 }})
       </button>
       <button class="btn btn-outline" (click)="starGist.emit(gist?.id)">
-        <i class="icon-star"></i> Star
+        <fa-icon [icon]="starIcon" ></fa-icon> Star ({{ gist?.stargazers_count || 0 }})
       </button>
     </div>
   </div>

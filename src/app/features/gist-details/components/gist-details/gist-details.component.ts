@@ -2,6 +2,10 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GistsService } from '../../../../core/services/api/gist.service';
 
+import { faCodeFork } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+
+
 @Component({
   selector: 'app-gist-details',
   standalone: false,
@@ -13,6 +17,9 @@ export class GistDetailsComponent implements OnInit {
   gistCode: string = '';
   @Output() forkGist = new EventEmitter<string>();
   @Output() starGist = new EventEmitter<string>();
+
+  starIcon = faStar;
+  forkIcon = faCodeFork;
 
   constructor(private route: ActivatedRoute, private gistsService: GistsService) {}
 

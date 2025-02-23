@@ -1,9 +1,12 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
-// import "primeicons/primeicons.css";
 import { LazyLoadEvent } from 'primeng/api';
 import { GistsService } from '../../../../core/services/api/gist.service';
+
+import { faCodeFork } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-public-gists',
@@ -16,6 +19,9 @@ export class PublicGistsComponent implements OnInit {
   totalRecords: number = 0;
   pageSize: number = 10;
   currentPage: number = 1;
+
+  starIcon = faStar;
+  forkIcon = faCodeFork;
 
   gistsList: any[] = [];
   @Output() forkGist = new EventEmitter<string>();

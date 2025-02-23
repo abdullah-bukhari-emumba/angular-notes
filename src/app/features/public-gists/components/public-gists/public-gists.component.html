@@ -53,11 +53,11 @@
               <td class="gist-actions-cell">
                 <div class="actions-icons">
                   <button (click)="forkGist.emit(gist.id)">
-                    <i class="pi pi-code" style="color: #003b44"></i>
+                    <fa-icon [icon]="forkIcon"></fa-icon>
                     Fork
                   </button>
                   <button (click)="starGist.emit(gist.id)">
-                    <i class="pi pi-star" style="color: #003b44"></i>
+                    <fa-icon [icon]="starIcon"></fa-icon>
                     Star
                   </button>
                 </div>

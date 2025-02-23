@@ -24,6 +24,22 @@
     </svg>
     <div class="header-right">
         <input type="text" placeholder="Search gists ...">
-        <button>Login</button>
+        <div *ngIf="user$ | async as user; else loginTemplate">
+            <img [src]="user.photoURL" alt="User Photo" class="user-photo" (click)="toggleDropdown()">
+            <div class="dropdown" *ngIf="showDropdown">
+                <p>Signed in as</p>
+                <p>{{ user.displayName }}</p>
+                <hr>
+                <a href="#" (click)="navigateTo('your-gists', $event)">Your Gists</a>
+                <a href="#" (click)="navigateTo('starred-gists', $event)">Starred Gists</a>
+                <a [href]="user.html_url" target="_blank">Your GitHub Profile</a>
+                <a href="https://docs.github.com/en/github/writing-on-github/creating-gists" target="_blank">Help</a>
+                <hr>
+                <button (click)="logout()">Logout</button>
+            </div>
+        </div>
+        <ng-template #loginTemplate>
+            <button (click)="login()">Login with GitHub</button>
+        </ng-template>
     </div>
 </header>

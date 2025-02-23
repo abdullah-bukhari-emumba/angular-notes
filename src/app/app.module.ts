@@ -13,6 +13,11 @@ import { GistDetailsModule } from './features/gist-details/gist-details.module';
 import { CreateGistModule } from './features/create-gist/create-gist.module';
 import { UserProfileModule } from './features/user-profile/user-profile.module';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { environment } from '../../environment';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -28,7 +33,10 @@ import { UserProfileModule } from './features/user-profile/user-profile.module';
     PublicGistsModule,
     GistDetailsModule,
     CreateGistModule,
-    UserProfileModule
+    UserProfileModule,
+    FontAwesomeModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

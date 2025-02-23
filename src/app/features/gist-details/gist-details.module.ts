@@ -5,6 +5,9 @@ import { GistDetailsRoutingModule } from './gist-details-routing.module';
 import { GistDetailsComponent } from './components/gist-details/gist-details.component';
 import { SharedModule } from '../../shared/shared.module';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+
 
 @NgModule({
   declarations: [
@@ -13,7 +16,8 @@ import { SharedModule } from '../../shared/shared.module';
   imports: [
     CommonModule,
     SharedModule,
-    GistDetailsRoutingModule
+    GistDetailsRoutingModule,
+    FontAwesomeModule,
   ]
 })
 export class GistDetailsModule { }

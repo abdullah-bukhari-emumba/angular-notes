@@ -7,6 +7,9 @@ import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
 import { TabViewModule } from 'primeng/tabview';
 
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
+
 @NgModule({
   declarations: [
     PublicGistsComponent
@@ -17,7 +20,8 @@ import { TabViewModule } from 'primeng/tabview';
     PublicGistsRoutingModule,
     TableModule,
     PaginatorModule,
-    TabViewModule
+    TabViewModule,
+    FontAwesomeModule,
   ]
 })
 export class PublicGistsModule { }
