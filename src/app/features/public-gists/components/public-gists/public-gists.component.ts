@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ChangeDetectorRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { LazyLoadEvent } from 'primeng/api';
@@ -6,7 +6,6 @@ import { GistsService } from '../../../../core/services/api/gist.service';
 
 import { faCodeFork } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-
 
 @Component({
   selector: 'app-public-gists',
@@ -39,7 +38,7 @@ export class PublicGistsComponent implements OnInit {
     return gist.id;
   }
 
-  constructor(private http: HttpClient, private gistsService: GistsService, private router: Router) {}
+  constructor(private http: HttpClient, private gistsService: GistsService, private router: Router, private cdr: ChangeDetectorRef) {}
 
   ngOnInit() {
     this.loadGists(1);
@@ -57,11 +56,26 @@ export class PublicGistsComponent implements OnInit {
           this.totalRecords = 1000;
           this.isLoading = false;
         },
-        error: (error) => {
+        error: (error: any) => {
           console.error('Error loading gists:', error);
           this.isLoading = false;
         }
       });
+  }
+
+  loadGistCode(gistId: string) {
+    this.gistsService.getGistById(gistId).subscribe({
+      next: (data: any) => {
+        const gist = this.gistsList.find(g => g.id === gistId);
+        if (gist) {
+          gist.code = data.files[Object.keys(data.files)[0]].content;
+          this.cdr.markForCheck();
+        }
+      },
+      error: (error: any) => {
+        console.error('Error loading gist code:', error);
+      }
+    });
   }
 
   onTabChange(event: number) {

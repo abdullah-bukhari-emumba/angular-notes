@@ -18,7 +18,7 @@
       Updated {{createdAt}}
     </div>
   </div>
-  <div class="gist-content">
+  <div class="gist-content" (click)="onCodeClick.emit()" style="overflow: auto; max-height: 400px; max-width: 100%;">
     <app-gist-code [code]="code"></app-gist-code>
   </div>
 </div>

@@ -15,4 +15,9 @@ export class GistCardComponent {
   
   @Output() onFork = new EventEmitter<void>();
   @Output() onStar = new EventEmitter<void>();
+  @Output() onCodeClick = new EventEmitter<void>();
+
+  handleCodeClick() {
+    this.onCodeClick.emit();
+  }
 }

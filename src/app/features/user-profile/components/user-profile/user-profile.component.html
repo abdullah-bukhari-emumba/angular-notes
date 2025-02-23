@@ -1,7 +1,7 @@
 <div class="profile-container">
   <aside class="profile-sidebar">
     <div class="profile-info">
-      <img src="assets/profile-pic.jpg" alt="Profile" class="profile-pic">
+      <img src="assets/profile-pic.jpg" alt="Profile" class="profile-pic" />
       <h1 class="profile-name">John Doe</h1>
       <div class="profile-stats">
         <div class="stat">
@@ -20,14 +20,16 @@
     <div class="content-header">
       <h2>My Gists</h2>
     </div>
-    
+
     <div class="gists-list">
-      <app-gist-card *ngFor="let gist of userGists"
+      <app-gist-card
+        *ngFor="let gist of userGists"
         [authorImage]="gist.authorImage"
         [authorName]="gist.authorName"
         [gistName]="gist.name"
         [createdAt]="gist.createdAt"
-        [code]="gist.code">
+        [code]="gist.code"
+      >
       </app-gist-card>
     </div>
   </main>

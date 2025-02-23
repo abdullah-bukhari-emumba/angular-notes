@@ -3,7 +3,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { faCodeFork } from '@fortawesome/free-solid-svg-icons';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 
-
 @Component({
   selector: 'app-gist-code',
   standalone: false,
@@ -11,7 +10,12 @@ import { faStar } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./gist-code.component.css'],
 })
 export class GistCodeComponent implements OnInit {
-  @Input() code: string = '';
+  @Input() set code(value: string) {
+    this._code = value;
+    this.formattedCode = this.syntaxHighlight(this._code);
+  }
+
+  private _code: string = '';
   formattedCode: string = '';
   formattedClass: string = '';
 
@@ -19,7 +23,7 @@ export class GistCodeComponent implements OnInit {
   forkIcon = faCodeFork;
 
   ngOnInit() {
-    this.formattedCode = this.syntaxHighlight(this.code);
+    this.formattedCode = this.syntaxHighlight(this._code);
   }
 
   syntaxHighlight(json: string) {

@@ -78,9 +78,10 @@
             [authorName]="gist.owner.login"
             [gistName]="gist.description || 'Untitled'"
             [createdAt]="gist.updated_at | date:'medium'"
-            [code]="''"
+            [code]="gist.code || 'This is gist code. Click to view.'"
             (onFork)="forkGist.emit(gist.id)"
             (onStar)="starGist.emit(gist.id)"
+            (onCodeClick)="loadGistCode(gist.id)"
           >
           </app-gist-card>
         </div>
