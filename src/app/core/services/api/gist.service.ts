@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { AuthService } from '../auth.service';
+import { GithubService } from '../github.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +10,19 @@ import { Observable } from 'rxjs';
 export class GistsService {
   private readonly API_URL = 'https://api.github.com/gists';
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    private githubService: GithubService
+  ) {}
+
+  private getHeaders(): HttpHeaders {
+    const token = this.authService.getGithubToken();
+    return new HttpHeaders({
+      'Authorization': `token ${token}`,
+      'Accept': 'application/vnd.github.v3+json'
+    });
+  }
 
   getPublicGists(page: number, perPage: number): Observable<any> {
     return this.http.get(`${this.API_URL}/public?page=${page}&per_page=${perPage}`);
@@ -16,5 +30,13 @@ export class GistsService {
 
   getGistById(id: string): Observable<any> {
     return this.http.get(`${this.API_URL}/${id}`);
+  }
+
+  createGist(gistData: any): Observable<any> {
+    return this.githubService.createGist(
+      gistData.description,
+      gistData.files,
+      gistData.public
+    );
   }
 }

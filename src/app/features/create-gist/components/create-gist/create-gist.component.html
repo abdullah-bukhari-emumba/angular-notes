@@ -3,29 +3,59 @@
     <h1>Create a new Gist</h1>
   </div>
   
-  <div class="gist-form">
+  <form [formGroup]="gistForm" (ngSubmit)="onSubmit()" class="gist-form">
     <div class="form-group">
       <input type="text" 
              class="gist-description" 
-             placeholder="Gist description...">
+             formControlName="description"
+             placeholder="Gist description..."
+             [class.invalid]="gistForm.get('description')?.invalid && gistForm.get('description')?.touched">
+      <div class="error-message" *ngIf="gistForm.get('description')?.invalid && gistForm.get('description')?.touched">
+        Description is required
+      </div>
     </div>
     
-    <div class="file-section">
-      <div class="file-header">
-        <input type="text" 
-               class="file-name-input" 
-               placeholder="Filename including extension...">
+    <div formArrayName="files">
+      <div *ngFor="let file of files.controls; let i=index" class="file-section">
+        <div [formGroupName]="i">
+          <div class="file-header">
+            <input type="text" 
+                   class="file-name-input" 
+                   formControlName="filename"
+                   placeholder="Filename including extension...">
+            <button type="button" 
+                    class="btn btn-icon" 
+                    (click)="removeFile(i)"
+                    *ngIf="files.length > 1">
+              <fa-icon [icon]="removeIcon"></fa-icon>
+            </button>
+          </div>
+          <textarea class="code-editor" 
+                    formControlName="content"
+                    placeholder="Enter code here..."></textarea>
+        </div>
       </div>
-      <textarea class="code-editor" 
-                placeholder="Enter code here..."></textarea>
     </div>
     
     <div class="form-actions">
-      <button class="btn btn-secondary">Add File</button>
+      <button type="button" 
+              class="btn btn-secondary"
+              (click)="addFile()">
+        <fa-icon [icon]="plusIcon"></fa-icon>
+        Add File
+      </button>
       <div class="create-actions">
-        <button class="btn btn-outline">Cancel</button>
-        <button class="btn btn-primary">Create Public Gist</button>
+        <button type="button" 
+                class="btn btn-outline"
+                (click)="onCancel()">
+          Cancel
+        </button>
+        <button type="submit" 
+                class="btn btn-primary"
+                [disabled]="gistForm.invalid || isSubmitting">
+          {{ isSubmitting ? 'Creating...' : 'Create Public Gist' }}
+        </button>
       </div>
     </div>
-  </div>
+  </form>
 </div>

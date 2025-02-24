@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .create-gist-container {
   max-width: 1012px;
   margin: 2rem auto;
@@ -91,4 +95,45 @@
   background-color: white;
   border: 1px solid #d0d7de;
   color: #24292f;
+}
+
+.invalid {
+  border-color: #dc3545;
+}
+
+.error-message {
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+.btn-icon {
+  padding: 0.25rem;
+  background: none;
+  border: none;
+  color: #656d76;
+  cursor: pointer;
+}
+
+.btn-icon:hover {
+  color: #dc3545;
+}
+
+.file-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.file-name-input {
+  flex: 1;
+}
+
+.btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.btn fa-icon {
+  margin-right: 0.5rem;
 }
