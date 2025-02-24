@@ -2,19 +2,44 @@ import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import firebase from 'firebase/compat/app';
 import { map } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  constructor(private afAuth: AngularFireAuth) {}
+  private githubToken = new BehaviorSubject<string | null>(null);
+  githubToken$ = this.githubToken.asObservable();
 
-  loginWithGitHub() {
-    return this.afAuth.signInWithPopup(new firebase.auth.GithubAuthProvider());
+  constructor(private afAuth: AngularFireAuth) {
+    // Check localStorage on initialization
+    const token = localStorage.getItem('github_token');
+    if (token) {
+      this.githubToken.next(token);
+    }
+  }
+
+  async loginWithGitHub() {
+    const result = await this.afAuth.signInWithPopup(new firebase.auth.GithubAuthProvider());
+    const credential = result.credential as firebase.auth.OAuthCredential;
+    const token = credential.accessToken;
+    
+    if (token) {
+      localStorage.setItem('github_token', token);
+      this.githubToken.next(token);
+    }
+    
+    return result;
   }
 
   logout() {
+    localStorage.removeItem('github_token');
+    this.githubToken.next(null);
     return this.afAuth.signOut();
+  }
+
+  getGithubToken(): string | null {
+    return this.githubToken.value;
   }
 
   getUser() {
