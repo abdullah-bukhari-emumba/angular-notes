@@ -32,6 +32,11 @@ export class GistsService {
     return this.http.get(`${this.API_URL}/${id}`);
   }
 
+  getUserGists(): Observable<any> {
+    const headers = this.getHeaders();
+    return this.http.get(`${this.API_URL}`, { headers });
+  }
+
   createGist(gistData: any): Observable<any> {
     return this.githubService.createGist(
       gistData.description,

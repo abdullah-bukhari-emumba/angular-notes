@@ -38,7 +38,7 @@ import { httpInterceptor } from './core/interceptors/http.interceptor';
     AngularFireAuthModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useFactory: () =>  httpInterceptor, multi: true },
+    // { provide: HTTP_INTERCEPTORS, useFactory: () =>  httpInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

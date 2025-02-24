@@ -1,19 +1,40 @@
 <div class="profile-container">
   <aside class="profile-sidebar">
-    <div class="profile-info">
-      <img src="assets/profile-pic.jpg" alt="Profile" class="profile-pic" />
-      <h1 class="profile-name">John Doe</h1>
+    <div class="profile-info" *ngIf="!isLoading && user; else loadingProfile">
+      <img [src]="user.photoURL" alt="Profile" class="profile-pic" />
+      <h1 class="profile-name">{{ user.displayName }}</h1>
       <div class="profile-stats">
         <div class="stat">
-          <span class="stat-count">42</span>
+          <span class="stat-count">{{ gistsCount }}</span>
           <span class="stat-label">Public Gists</span>
         </div>
         <div class="stat">
-          <span class="stat-count">128</span>
+          <span class="stat-count">{{ followersCount }}</span>
           <span class="stat-label">Followers</span>
         </div>
       </div>
     </div>
+    
+    <ng-template #loadingProfile>
+      <div class="profile-info skeleton" *ngIf="isLoading">
+        <div class="skeleton-avatar"></div>
+        <div class="skeleton-text"></div>
+        <div class="profile-stats">
+          <div class="stat">
+            <div class="skeleton-text"></div>
+            <div class="skeleton-text"></div>
+          </div>
+          <div class="stat">
+            <div class="skeleton-text"></div>
+            <div class="skeleton-text"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="error-message" *ngIf="error">
+        {{ error }}
+      </div>
+    </ng-template>
   </aside>
 
   <main class="profile-content">
@@ -21,16 +42,45 @@
       <h2>My Gists</h2>
     </div>
 
-    <div class="gists-list">
-      <app-gist-card
-        *ngFor="let gist of userGists"
-        [authorImage]="gist.authorImage"
-        [authorName]="gist.authorName"
-        [gistName]="gist.name"
-        [createdAt]="gist.createdAt"
-        [code]="gist.code"
-      >
-      </app-gist-card>
+    <div class="gists-list" *ngIf="!isLoading; else loadingGists">
+      <div *ngIf="userGists.length > 0; else noGists">
+        <app-gist-card
+          *ngFor="let gist of userGists"
+          [authorImage]="user.photoURL"
+          [authorName]="user.displayName"
+          [gistName]="gist.description || 'Untitled'"
+          [createdAt]="gist.updated_at | date:'medium'"
+          [code]="getFirstFileContent(gist)"
+        >
+        </app-gist-card>
+      </div>
+      
+      <ng-template #noGists>
+        <div class="no-gists-message">
+          <p>You don't have any gists yet.</p>
+          <a routerLink="/create-gist" class="create-gist-btn">Create a Gist</a>
+        </div>
+      </ng-template>
     </div>
+    
+    <ng-template #loadingGists>
+      <div class="gists-list skeleton" *ngIf="isLoading">
+        <div class="skeleton-card" *ngFor="let i of [1,2,3]">
+          <div class="skeleton-card-header">
+            <div class="skeleton-card-author">
+              <div class="skeleton-avatar"></div>
+              <div class="skeleton-text"></div>
+            </div>
+          </div>
+          <div class="skeleton-card-content">
+            <div class="skeleton-code-lines">
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line"></div>
+              <div class="skeleton-line"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-template>
   </main>
 </div>
