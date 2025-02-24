@@ -14,3 +14,10 @@
 [p3] search bar, [p0] client side, [p3] server side
 
 [p3] star buttons and fork button should function properly 
+
+
+# new todos 
+
+[p1] profile operationl -- my gists and my starred and my forked gists in this 
+
+[p1] create gists -- UI correction -- funcitonal 

@@ -19,6 +19,8 @@
     </div>
   </div>
   <div class="code-preview">
-    <pre><code [ngClass]="formattedClass">{{ formattedCode || code }}</code></pre>
+    <div class="gist-content" style="overflow: auto; max-height: 400px; max-width: 100%;">
+      <pre [innerHTML]="formattedCode"></pre>
+    </div>
   </div>
 </div>

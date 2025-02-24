@@ -1,0 +1,32 @@
+.unauthorized-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #fff;
+  color: #003b44;
+  text-align: center;
+}
+
+.unauthorized-container h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.unauthorized-container p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.unauthorized-container .btn {
+  padding: 0.5rem 1rem;
+  background-color: #003b44;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.unauthorized-container .btn:hover {
+  background-color: #014954;
+}
