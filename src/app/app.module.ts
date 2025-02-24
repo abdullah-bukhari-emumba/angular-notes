@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
 
@@ -17,11 +17,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { environment } from '../../environment';
+import { httpInterceptor } from './core/interceptors/http.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -38,7 +37,9 @@ import { environment } from '../../environment';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireAuthModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useFactory: () =>  httpInterceptor, multi: true },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
