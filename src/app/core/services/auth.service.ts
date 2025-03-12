@@ -20,10 +20,12 @@ export class AuthService {
   }
 
   async loginWithGitHub() {
-    const result = await this.afAuth.signInWithPopup(new firebase.auth.GithubAuthProvider());
+    const provider = new firebase.auth.GithubAuthProvider();
+    provider.addScope('gist'); 
+    const result = await this.afAuth.signInWithPopup(provider);
     const credential = result.credential as firebase.auth.OAuthCredential;
     const token = credential.accessToken;
-    
+  
     if (token) {
       localStorage.setItem('github_token', token);
       this.githubToken.next(token);
@@ -31,6 +33,7 @@ export class AuthService {
     
     return result;
   }
+  
 
   logout() {
     localStorage.removeItem('github_token');
