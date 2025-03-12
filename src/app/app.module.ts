@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptors } from '@angular/common/http';
 import { TableModule } from 'primeng/table';
 import { PaginatorModule } from 'primeng/paginator';
 
@@ -38,8 +38,8 @@ import { httpInterceptor } from './core/interceptors/http.interceptor';
     AngularFireAuthModule,
   ],
   providers: [
-    // { provide: HTTP_INTERCEPTORS, useFactory: () =>  httpInterceptor, multi: true },
-  ],
+    provideHttpClient(withInterceptors([httpInterceptor]))]
+  ,
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
